@@ -13,4 +13,3 @@ def videos(request, playlist):
     youtube = build('youtube', 'v3', developerKey=settings.YOUTUBE_API_KEY)
     videos = youtube.playlistItems().list(part='snippet', playlistId=playlist, maxResults=50).execute()
     return render(request, "youtube_client/playlist_videos.html", {'videos': videos["items"]})
-
